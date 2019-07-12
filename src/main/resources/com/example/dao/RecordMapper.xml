@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.example.po.Record">
+    <id column="recordid" jdbcType="INTEGER" property="recordid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="compony" jdbcType="VARCHAR" property="compony" />
+    <result column="salary" jdbcType="DOUBLE" property="salary" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    recordid, userid, time, url, compony, salary, state, count, createtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from record
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from record
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.po.Record">
+    insert into record (recordid, userid, time, 
+      url, compony, salary, 
+      state, count, createtime
+      )
+    values (#{recordid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
+      #{url,jdbcType=VARCHAR}, #{compony,jdbcType=VARCHAR}, #{salary,jdbcType=DOUBLE}, 
+      #{state,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.po.Record">
+    insert into record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        recordid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="compony != null">
+        compony,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        #{recordid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="compony != null">
+        #{compony,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.po.Record">
+    update record
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="compony != null">
+        compony = #{compony,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.po.Record">
+    update record
+    set userid = #{userid,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      url = #{url,jdbcType=VARCHAR},
+      compony = #{compony,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=DOUBLE},
+      state = #{state,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where recordid = #{recordid,jdbcType=INTEGER}
+  </update>
+</mapper>
