@@ -18,6 +18,22 @@
     from user
     where oppenid = #{oppenid,jdbcType=INTEGER}
   </select>
+
+  <select id="selectOppenId" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(*)
+    from user
+    where oppenid = #{oppenid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectPower" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(*)
+    from user
+    where oppenid = #{oppenid,jdbcType=INTEGER}
+    and power = 1;
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
     where oppenid = #{oppenid,jdbcType=INTEGER}

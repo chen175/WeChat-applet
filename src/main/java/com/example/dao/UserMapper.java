@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import com.example.po.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer oppenid);
@@ -14,4 +15,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    Integer selectOppenId(@Param("oppenid") String oppenid);
+
+    Integer selectPower(@Param("oppenid") String oppenid);
 }
